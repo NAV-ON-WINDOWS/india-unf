@@ -22,6 +22,16 @@ education_mask = df.headline_text.str.contains("education", case=True,
 # print(f"{df[education_mask].shape[0]} headlines found!") # 9299 headlines
 # print(f"{df[education_mask].head(9299)}") # printing all the 9299 headlines found
 
+# keeping track of years when "education" was mentioned
+"""
+using boolean indexing
+"""
+ed_mask = df['headline_text'].str.contains("education", case=False, na=False)
+ed_df = df[ed_mask]
+ed_df = ed_df.copy() # gives a new dataframe
+ed_df['year'] = ed_df.publish_date.astype(str).str[:4]
+ed_by_year = ed_df['year'].value_counts().sort_index()
+# print(ed_by_year)
 
 
 # counting the occurrences of the word "employment" across the dataset
@@ -29,3 +39,19 @@ employment_mask = df.headline_text.str.contains("employment", case=True,
                                            na=None, regex=False)
 # print(f"{df[employment_mask].shape[0]} headlines found!") # 1008 headlines found
 # print(f"{df[employment_mask].head()}") # printing all the 1008 headlines found
+
+# keeping track of years when "employment" was mentioned
+"""
+using boolean indexing
+"""
+emp_mask = df['headline_text'].str.contains('employment', case=False, na=False)
+emp_df = df[emp_mask]
+emp_df = emp_df.copy() # gives a new dataframe
+emp_df['year'] = emp_df['publish_date'].astype(str).str[:4]
+emp_df_year = emp_df['year'].value_counts().sort_index()
+# print(emp_df_year)
+
+
+# combine both the dataframes
+df_combined = pd.concat([ed_df, emp_df], ignore_index=True)
+print(df_combined)
