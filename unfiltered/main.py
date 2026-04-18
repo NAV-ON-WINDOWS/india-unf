@@ -16,3 +16,9 @@ we don't need to fill none values,
 or,
 replace the duplicates,
 """
+
+# counting the occurrences of the word "education" across the dataset
+education = df.headline_text.str.contains("education", case=True,
+                                     na=None, regex=False)
+print(f"{df[education].shape[0]} headlines found!") # 9299 headlines
+print(f"{df[education].head(9299)}") # printing all the 9299 headlines found
