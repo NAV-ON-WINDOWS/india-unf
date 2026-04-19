@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 # creating dataset and setting it to display max columns
 dataset = "india-news-headlines.csv"
@@ -54,4 +56,23 @@ emp_df_year = emp_df['year'].value_counts().sort_index()
 
 # combine both the dataframes
 df_combined = pd.concat([ed_df, emp_df], ignore_index=True)
-print(df_combined)
+# print(df_combined)
+
+
+# combined years
+years = ed_by_year.index.union(emp_df_year.index)
+
+
+# matplotlib :))
+fig, ax = plt.subplots(figsize=(13.66, 7.68))
+
+ax.title.set_text("Education v/s Employment")
+ax.xaxis.set_ticklabels(years)
+
+ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
+ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o')
+
+
+
+plt.show()
+
