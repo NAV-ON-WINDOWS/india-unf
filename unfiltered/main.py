@@ -63,8 +63,10 @@ df_combined = pd.concat([ed_df, emp_df], ignore_index=True)
 years = ed_by_year.index.union(emp_df_year.index)
 
 
-# matplotlib :))
+# matplotlib plotting
 fig, ax = plt.subplots(figsize=(13.66, 7.68))
+manager = plt.get_current_fig_manager()
+manager.full_screen_toggle() # manager sets res to fullscreen
 
 ax.title.set_text("Education v/s Employment")
 ax.xaxis.set_ticklabels(years)
@@ -75,4 +77,3 @@ ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o')
 
 
 plt.show()
-
