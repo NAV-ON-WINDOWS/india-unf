@@ -69,7 +69,9 @@ fig, ax = plt.subplots(figsize=(13.66, 7.68))
 manager = plt.get_current_fig_manager()
 manager.full_screen_toggle() # manager sets res to fullscreen
 
-ax.title.set_text("Education v/s Employment")
+ax.set_title("Headline frequency analysis across Indian news (2001–2023)",
+             fontsize=9, color='gray', pad=25)
+fig.suptitle("Education v/s Employment", fontsize=14, fontweight='bold')
 
 ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
 ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o')
