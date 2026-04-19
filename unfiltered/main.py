@@ -74,6 +74,6 @@ ax.xaxis.set_ticklabels(years)
 ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
 ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o')
 
-
+ax.legend(loc="upper right", frameon=True)
 
 plt.show()
