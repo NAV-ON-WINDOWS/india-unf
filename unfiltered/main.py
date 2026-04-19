@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 # creating dataset and setting it to display max columns
 dataset = "india-news-headlines.csv"
 df = pd.read_csv(dataset)
@@ -69,11 +70,19 @@ manager = plt.get_current_fig_manager()
 manager.full_screen_toggle() # manager sets res to fullscreen
 
 ax.title.set_text("Education v/s Employment")
-ax.xaxis.set_ticklabels(years)
 
 ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
 ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o')
 
 ax.legend(loc="upper right", frameon=True)
+
+ax.grid(True, linestyle='-', which='major')
+ax.tick_params(axis='both')
+
+ax.set_ylim(bottom=0)
+ax.set_xlim(left=0)
+
+ax.yaxis.set_major_locator(plt.MultipleLocator(100)) # y grid lines every 100 px
+ax.xaxis.set_major_locator(plt.MultipleLocator(1)) # x grid lines year
 
 plt.show()
