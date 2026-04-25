@@ -69,22 +69,27 @@ fig, ax = plt.subplots(figsize=(13.66, 7.68))
 manager = plt.get_current_fig_manager()
 manager.full_screen_toggle() # manager sets res to fullscreen
 
+# adding title and subtitle
+ax.set_title("Headline frequency analysis across Indian news (2001–2023)",
+             fontsize=9, color='black', pad=25)
+fig.suptitle("Education v/s Employment", fontsize=14, fontweight='bold')
+
+# axis creation and labelling
+ax.plot(ed_by_year.index, ed_by_year.values,
+        label="Education", marker='o', color='blue')
+ax.set_ylabel("Education", color='blue')
+ax.tick_params(axis='y', labelcolor='blue')
+
 # adding secondary axis to plot employment
 ax2 = ax.twinx()
 ax2.plot(emp_df_year.index, emp_df_year.values,
          label="Employment", marker='o', color='red')
-ax2.set_ylabel('Employment')
+ax2.set_ylabel('Employment', color='red')
 ax2.tick_params(axis='y', labelcolor='red')
 ax2.yaxis.set_major_locator(plt.MultipleLocator(10))
-
-# adding title and subtitle
-ax.set_title("Headline frequency analysis across Indian news (2001–2023)",
-             fontsize=9, color='gray', pad=25)
-fig.suptitle("Education v/s Employment", fontsize=14, fontweight='bold')
-
-# axis labelling
-ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
 # ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o') # Previous employment plotting
+
+# Legend
 lines1, labels1 = ax.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax.legend(lines1 + lines2, labels1 + labels2, loc="upper right")
@@ -109,7 +114,7 @@ ax.annotate(f"Peak = {peak_ed_val}",
 peak_emp_year = emp_df_year.idxmax()
 peak_emp_value = emp_df_year.max()
 ax.annotate(f"Peak = {peak_emp_value}",
-            xy=(peak_emp_year, peak_emp_value),
+            xy=(int(peak_emp_year) - 4, int(peak_emp_value) + 20),
             xytext=(0, 50),              # Increased offset to clear the lines
             textcoords="offset points",
             ha='center',
