@@ -1,7 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib import ticker
 
 # creating dataset and setting it to display max columns
 dataset = "india-news-headlines.csv"
@@ -102,26 +100,27 @@ ax.yaxis.set_major_locator(plt.MultipleLocator(100)) # y grid lines every 100 px
 ax.xaxis.set_major_locator(plt.MultipleLocator(1)) # x grid lines year
 
 # adding peak annotations
+# education peak
 peak_ed_year = ed_by_year.idxmax()
 peak_ed_val = ed_by_year.max()
 ax.annotate(f"Peak = {peak_ed_val}",
             xy=(peak_ed_year, peak_ed_val),
-            xytext=(0, 10),              # Move 10 points straight up from the point
-            textcoords="offset points",   # Interpret (0, 10) as an offset, not a year/value
-            ha='center',                  # Centers the text horizontally over the point
-            arrowprops=dict(arrowstyle="->"))
-
-peak_emp_year = emp_df_year.idxmax()
-peak_emp_value = emp_df_year.max()
-ax.annotate(f"Peak = {peak_emp_value}",
-            xy=(int(peak_emp_year) - 4, int(peak_emp_value) + 20),
-            xytext=(0, 50),              # Increased offset to clear the lines
+            xytext=(-100, 0),
             textcoords="offset points",
             ha='center',
-            arrowprops=dict(arrowstyle="->"))
+            color='blue',
+            arrowprops=dict(arrowstyle="->", color='blue'))
 
-
+# employment peak
+peak_emp_year = emp_df_year.idxmax()
+peak_emp_value = emp_df_year.max()
+ax2.annotate(f"Peak = {peak_emp_value}",
+             xy=(peak_emp_year, peak_emp_value),
+             xytext=(150, 0),
+             textcoords="offset points",
+             ha='center',
+             color='red',
+             arrowprops=dict(arrowstyle="->", color='red'))
 ax.set_ylim(bottom=0)
-ax.set_xlim(left=0)
 
 plt.show()
