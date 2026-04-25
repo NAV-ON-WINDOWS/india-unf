@@ -85,7 +85,9 @@ fig.suptitle("Education v/s Employment", fontsize=14, fontweight='bold')
 # axis labelling
 ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
 # ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o') # Previous employment plotting
-ax.legend(loc="upper right", frameon=True)
+lines1, labels1 = ax.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax.legend(lines1 + lines2, labels1 + labels2, loc="upper right")
 
 # adding grid
 ax.grid(True, linestyle='-', which='major')
