@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-
+from matplotlib import ticker
 
 # creating dataset and setting it to display max columns
 dataset = "india-news-headlines.csv"
@@ -69,15 +69,25 @@ fig, ax = plt.subplots(figsize=(13.66, 7.68))
 manager = plt.get_current_fig_manager()
 manager.full_screen_toggle() # manager sets res to fullscreen
 
+# adding secondary axis to plot employment
+ax2 = ax.twinx()
+ax2.plot(emp_df_year.index, emp_df_year.values,
+         label="Employment", marker='o', color='red')
+ax2.set_ylabel('Employment')
+ax2.tick_params(axis='y', labelcolor='red')
+ax2.yaxis.set_major_locator(plt.MultipleLocator(10))
+
+# adding title and subtitle
 ax.set_title("Headline frequency analysis across Indian news (2001–2023)",
              fontsize=9, color='gray', pad=25)
 fig.suptitle("Education v/s Employment", fontsize=14, fontweight='bold')
 
+# axis labelling
 ax.plot(ed_by_year.index, ed_by_year.values, label="Education", marker='o')
-ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o')
-
+# ax.plot(emp_df_year.index, emp_df_year.values, label="Employment", marker='o') # Previous employment plotting
 ax.legend(loc="upper right", frameon=True)
 
+# adding grid
 ax.grid(True, linestyle='-', which='major')
 ax.tick_params(axis='both')
 
@@ -106,8 +116,5 @@ ax.annotate(f"Peak = {peak_emp_value}",
 
 ax.set_ylim(bottom=0)
 ax.set_xlim(left=0)
-
-ax.yaxis.set_major_locator(plt.MultipleLocator(100)) # y grid lines every 100 px
-ax.xaxis.set_major_locator(plt.MultipleLocator(1)) # x grid lines year
 
 plt.show()
