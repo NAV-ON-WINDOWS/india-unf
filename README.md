@@ -43,8 +43,8 @@ This project uses a dataset of **3,876,557 headlines** sourced from Kaggle, anal
 
 **1. Clone the repo**
 ```bash
-git clone https://github.com/NAV-ON-WINDOWS/india-unfiltered.git
-cd india-unfiltered
+git clone https://github.com/NAV-ON-WINDOWS/india-unf.git
+cd india-unf
 ```
 
 **2. Install dependencies**
@@ -83,22 +83,24 @@ Concepts used:
 | Python 3.14 | Core language |
 | Pandas | Data loading, filtering, analysis |
 | Matplotlib | Visualization |
-| NumPy | Numerical support |
 
 ---
 
 ## Project Structure
 
 ```
-india-unfiltered/
-├── main.py               # Main analysis script
+india-unf/
+├── unfiltered/
+│   └── main.py           # Main analysis script
+├── .gitattributes
+├── .gitignore            # Excludes .venv and CSV
 ├── README.md             # You are here
-└── .gitignore            # Excludes .venv and CSV
+└── visual.png            # Education vs Employment graph
 ```
 
 ---
 
 ## Author
 
-Built by [Arnav](https://github.com/NAV-ON-WINDOWS) — CS fresher, first data project.  
+Built by [Arnav](https://github.com/NAV-ON-WINDOWS) — CS fresher  
 If you found this interesting, star the repo.
