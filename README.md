@@ -24,6 +24,7 @@ This project uses a dataset of **3,876,557 headlines** sourced from Kaggle, anal
 - **Employment** never crossed **112 headlines** in any single year across 22 years — despite unemployment being one of India's most pressing issues.
 - Both keywords follow near-identical trend patterns year over year, suggesting that **overall news volume** drives individual topic coverage more than editorial priority.
 - The **2018–2020 divergence** is the most interesting anomaly — education coverage spiked while employment didn't follow. Make of that what you will.
+- It is observed that the Education vs Employment graph follows a **near-identical trend throughout** — both factors peaking in 2012. However, post-2018, the pattern breaks down as both education and employment coverage experience sharp declines, never recovering to their pre-2018 levels.
 
 ---
 
